@@ -1,3 +1,5 @@
 stage('Despliegue-dev'){
-	echo "################# Hola desde la rama despliegue Version 0.0 rama main repo fuentes ###################"
+	echo "################# Hola desde la rama despliegue Version inicial repositorio fuentes 0.0 ###################"
+        echo "Esto es una prueba para la version a desplegar 1.0.8"
+        echo "Desde la rama develop"
 }
