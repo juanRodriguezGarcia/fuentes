@@ -1,2 +1,6 @@
 # fuentes
-https://github.com/aws-samples/amazon-bedrock-rag-knowledgebases-agents-cloudformation/blob/main/README.md
+
+1.0.1
+1.0.2
+1.0.3
+1.0.4
