@@ -1,0 +1,89 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: OpenSearchServiceDomain resource
+Parameters:
+  DomainName:
+    Description: User-defined OpenSearch domain name
+    Type: String
+    Default: opensearhjuandemo
+  EngineVersion:
+    Description: User-defined OpenSearch version
+    Type: String
+    Default: OpenSearch_2.17
+  InstanceType:
+    Type: String
+    Default: t3.small.search
+  AvailabilityZone:
+    Type: String
+    Default: us-east-1
+  CidrBlock:
+    Type: String
+    Default: 172.31.0.0/16
+  GroupDescription:
+    Type: String
+  SGName:
+    Type: String
+    Default: SgAnaliticaGenerativa
+Resources:
+##https://docs.aws.amazon.com/opensearch-service/latest/developerguide/supported-instance-types.html 
+## este rol debe estar creado previo a la creacion del opensearch AWSServiceRoleForAmazonOpenSearchService 
+  OpenSearchServiceDomain:
+    Type: AWS::OpenSearchService::Domain
+    Properties:
+      DomainName: !Ref DomainName
+      EngineVersion: !Ref EngineVersion
+      ClusterConfig:
+        InstanceCount: 1
+        InstanceType: !Ref InstanceType
+      EBSOptions:
+        EBSEnabled: true
+        VolumeSize: 10
+        VolumeType: gp3      
+      AccessPolicies:
+        Version: '2012-10-17'
+        Statement:
+          Effect: Allow
+          Principal:
+            AWS: 'arn:aws:iam::134383757275:user/admin'
+          Action: 'es:*'
+          Resource: 'arn:aws:es:us-east-1:134383757275:domain/opensearhjuandemo/*'        
+      NodeToNodeEncryptionOptions:
+        Enabled: true
+      EncryptionAtRestOptions:
+        Enabled: true
+      DomainEndpointOptions:
+        EnforceHTTPS: true          
+      AdvancedSecurityOptions:
+        Enabled: true
+        InternalUserDatabaseEnabled: true
+        MasterUserOptions:
+          MasterUserName: juan
+          MasterUserPassword: 'Re12d*-3b'
+      AdvancedOptions:
+        rest.action.multi.allow_explicit_index: 'true'
+        override_main_response_version: 'true'
+      Tags:
+        - Key: foo
+          Value: bar
+      VPCOptions:
+        SubnetIds:
+          - subnet-74251f28
+        SecurityGroupIds:
+          - !Ref mySecurityGroup
+  mySecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: !Ref GroupDescription
+      VpcId: vpc-08dd9772
+      GroupName: !Ref SGName
+      SecurityGroupIngress:
+        - FromPort: 443
+          IpProtocol: tcp
+          ToPort: 443
+          CidrIp: 0.0.0.0/0
+Outputs:
+  Arn:
+    Value: !GetAtt OpenSearchServiceDomain.Arn
+  DomainEndpoint:
+    Value: !GetAtt OpenSearchServiceDomain.DomainEndpoint
+  SecurityGroupId:
+    Value: !Ref mySecurityGroup
