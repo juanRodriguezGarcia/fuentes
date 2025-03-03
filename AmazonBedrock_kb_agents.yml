@@ -93,8 +93,18 @@ Resources:
           S3DataSourceConfiguration:
             InclusionPrefixes:
               - "fuentes1/"  # Carpeta específica en S3
+      SyncSchedule:
+        ScheduleExpression: "rate(1 minute)"  # Sincronización automática cada hora
 
+#Alternativa manual: Forzar la sincronización desde AWS CLI
+#Si necesitas ejecutar la sincronización manualmente en algún momento, puedes hacer lo siguiente:
 
+#sh
+#Copiar
+#Editar
+#aws bedrock-agent start-ingestion-job \
+#  --knowledge-base-id <KnowledgeBaseId> \
+#  --data-source-id <DataSourceId>
   
   AgentResource:
       Type: AWS::Bedrock::Agent
