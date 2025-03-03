@@ -10,7 +10,7 @@ Resources:
       KnowledgeBaseConfiguration:
         Type: "VECTOR"
         VectorKnowledgeBaseConfiguration:
-          EmbeddingModelArn: !Sub "arn:${AWS::Partition}:bedrock:${AWS::Region}::foundation-model/amazon.titan-embed-text-v2"
+          EmbeddingModelArn: !Sub "arn:${AWS::Partition}:bedrock:${AWS::Region}::foundation-model/amazon.titan-embed-text-v2:0"
       StorageConfiguration:
         Type: "OPENSEARCH_SERVERLESS"
         OpensearchServerlessConfiguration:
