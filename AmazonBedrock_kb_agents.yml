@@ -81,6 +81,17 @@ Resources:
         Type: "S3"
         S3Configuration:
           BucketArn: !Ref S3bucketarn
+  SampleDataSourcevc2:
+    Type: AWS::Bedrock::DataSource
+    Properties:
+      KnowledgeBaseId: !Ref KnowledgeBaseWithAoss
+      Name: !Ref DataSource
+      DataSourceConfiguration:
+        Type: "S3"
+        S3Configuration:
+          BucketArn: !Ref S3bucketarn
+          IngestionConfiguration:
+            S3Prefix: "mi_carpeta_especifica/"  # Ruta de la carpeta en S3
 
   
   AgentResource:
