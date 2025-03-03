@@ -52,3 +52,8 @@ Resources:
       Name: "/opensearch-serverless/collection-arn"
       Type: String
       Value: "arn:aws:aoss:us-east-1:123456789012:collection/my-collection"
+
+
+      aws bedrock-agent start-ingestion-job \
+  --knowledge-base-id <KnowledgeBaseId> \
+  --data-source-id <DataSourceId>
