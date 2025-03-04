@@ -61,3 +61,6 @@ Resources:
 
 
 aws bedrock-agent create-agent-version --agent-id "ID_DE_TU_AGENTE" --description "Segunda versión del agente"
+
+aws bedrock update-agent-alias  --agent-id "ID_DE_TU_AGENTE"  --alias-name "NOMBRE_DEL_ALIAS" --description "Descripción del alias"  --routing-configuration "{"createNewVersion": true}"
+
