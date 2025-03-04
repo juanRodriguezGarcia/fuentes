@@ -57,3 +57,7 @@ Resources:
       aws bedrock-agent start-ingestion-job \
   --knowledge-base-id <KnowledgeBaseId> \
   --data-source-id <DataSourceId>
+
+
+
+aws bedrock-agent create-agent-version --agent-id "ID_DE_TU_AGENTE" --description "Segunda versión del agente"
