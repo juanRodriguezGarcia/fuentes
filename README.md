@@ -59,6 +59,7 @@ Resources:
   --data-source-id <DataSourceId>
 
 
+      FoundationModel: "anthropic.claude-3.5-sonnet-20240229-v1:0"
 
 aws bedrock-agent create-agent-version --agent-id "ID_DE_TU_AGENTE" --description "Segunda versión del agente"
 
