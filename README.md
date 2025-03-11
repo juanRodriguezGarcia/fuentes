@@ -65,3 +65,20 @@ aws bedrock-agent create-agent-version --agent-id "ID_DE_TU_AGENTE" --descriptio
 
 aws bedrock update-agent-alias  --agent-id "ID_DE_TU_AGENTE"  --alias-name "NOMBRE_DEL_ALIAS" --description "Descripción del alias"  --routing-configuration "{"createNewVersion": true}"
 
+
+
+
+        stage('Setup Parameters') {
+            steps {
+                script {
+                    properties([
+                        parameters([
+                            string(name: 'ENVIRONMENT', defaultValue: 'dev', description: 'Especifica el entorno de despliegue'),
+                            booleanParam(name: 'RUN_TESTS', defaultValue: true, description: 'Ejecutar pruebas antes de desplegar'),
+                            choice(name: 'DEPLOY_REGION', choices: ['us-east-1', 'us-west-2', 'eu-central-1'], description: 'Región de despliegue')
+                        ])
+                    ])
+                }
+            }
+        }
+
