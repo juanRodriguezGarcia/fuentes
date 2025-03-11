@@ -66,3 +66,24 @@ done < "$CSV_FILE"
 
 echo "$(date '+%Y-%m-%d %H:%M:%S') - Proceso finalizado" | tee -a "$LOG_FILE"
 
+
+
+
+
+# Configurar variables de entorno (normalmente ya estarán configuradas en tu entorno CI/CD)
+export ARTIFACTORY_USER=juangrodriguez10@gmail.com
+export ARTIFACTORY_TOKEN=cmVmdGtuOjAxOjEk4NjcyNDc6M0NZNXBBZmY3
+export ARTIFACTORY_DOMAIN=testjuan.jfrog.io
+export REPOSITORY_NAME=docker-trial
+
+# Iniciar sesión en Artifactory Docker Registry
+echo $ARTIFACTORY_TOKEN | docker login $ARTIFACTORY_DOMAIN -u $ARTIFACTORY_USER --password-stdin
+
+# Tag de la imagen Docker
+docker tag demodebian11:latest $ARTIFACTORY_DOMAIN/$REPOSITORY_NAME/demodebian11:1.0.1
+
+# Push de la imagen a Artifactory
+docker push $ARTIFACTORY_DOMAIN/$REPOSITORY_NAME/demodebian11:1.0.1
+
+
+echo $ARTIFACTORY_TOKEN | docker login $ARTIFACTORY_DOMAIN -u $ARTIFACTORY_TOKEN --password-stdin  
