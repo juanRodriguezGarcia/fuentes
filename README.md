@@ -82,3 +82,15 @@ aws bedrock update-agent-alias  --agent-id "ID_DE_TU_AGENTE"  --alias-name "NOMB
             }
         }
 
+
+
+
+
+
+
+        curl -H "X-JFrog-Art-Api: TU_API_KEY" -X PUT "https://tu-artifactory.com/artifactory/mis-repositorios/nueva-carpeta/"
+curl -H "X-JFrog-Art-Api: TU_API_KEY" -X PUT "https://tu-artifactory.com/artifactory/mis-repositorios/nueva-carpeta/"
+
+
+
+
