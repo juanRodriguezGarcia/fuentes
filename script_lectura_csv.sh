@@ -87,3 +87,15 @@ docker push $ARTIFACTORY_DOMAIN/$REPOSITORY_NAME/demodebian11:1.0.1
 
 
 echo $ARTIFACTORY_TOKEN | docker login $ARTIFACTORY_DOMAIN -u $ARTIFACTORY_TOKEN --password-stdin  
+
+
+
+
+
+
+aws opensearchserverless list-indexes --collection-id ID_DE_LA_COLECCIÓN
+
+curl -X GET "https://tu-opensearch-url:9200/NOMBRE_DEL_INDICE/_settings?pretty"
+
+curl -X GET "https://tu-opensearch-url:9200/NOMBRE_DEL_INDICE/_mapping?pretty"
+curl -X GET "https://tu-opensearch-url:9200/NOMBRE_DEL_INDICE"
