@@ -85,6 +85,8 @@ aws bedrock update-agent-alias  --agent-id "ID_DE_TU_AGENTE"  --alias-name "NOMB
 
 
 
+curl -u usuario:contraseña -X PUT "http://<JFROG_URL>/artifactory/<REPO>/<CARPETA>/" 
+curl -u usuario:contraseña -X PUT "http://<JFROG_URL>/artifactory/<REPO>/<CARPETA>/placeholder.txt" --data ""
 
 
 
