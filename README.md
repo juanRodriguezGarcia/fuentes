@@ -88,10 +88,13 @@ aws bedrock update-agent-alias  --agent-id "ID_DE_TU_AGENTE"  --alias-name "NOMB
 curl -u usuario:contraseña -X PUT "http://<JFROG_URL>/artifactory/<REPO>/<CARPETA>/" 
 curl -u usuario:contraseña -X PUT "http://<JFROG_URL>/artifactory/<REPO>/<CARPETA>/placeholder.txt" --data ""
 
+curl -u usuario:contraseña -X POST "http://<JFROG_URL>/artifactory/api/copy/source-repo/version?to=/dest-repo/prod/"
+curl -u usuario:contraseña -X POST "http://<JFROG_URL>/artifactory/api/copy/source-repo/version?to=/dest-repo/prod/&failFast=1"
 
 
 curl -H "X-JFrog-Art-Api: TU_API_KEY" -X PUT "https://tu-artifactory.com/artifactory/mis-repositorios/nueva-carpeta/"
 curl -H "X-JFrog-Art-Api: TU_API_KEY" -X PUT "https://tu-artifactory.com/artifactory/mis-repositorios/nueva-carpeta/"
+curl -u usuario:contraseña -X POST "http://<JFROG_URL>/artifactory/api/copy/source-repo/version?to=/dest-repo/prod/&failFast=1"
 
 
 
@@ -103,4 +106,10 @@ curl -u usuario:contraseña -X POST "https://tu-artifactory.com/artifactory/api/
   "copy": true,
   "failFast": true
 }'
+
+
+
+curl -u usuario:contraseña -X POST "http://<JFROG_URL>/artifactory/api/copy/source-repo/versions/?to=/prod-repo/proyectos/"
+
+
 
